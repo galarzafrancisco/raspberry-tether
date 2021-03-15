@@ -10,7 +10,7 @@
 
 # 0. Define the name of the source interface. All interfaces can be listed using ifconfig -s
 # wifi tends to be wlan0, ethernet tends to be eth0. iPhone in my case is enp1s0u1
-SOURCE_INTERFACE=enp1s0u1
+SOURCE_INTERFACE=enp1s0u1u1c4i2
 
 # 1. Install iphone things (taken from https://gist.github.com/antronic/157e047cdefa98b3150195c2eacb56b8)
 sudo apt install -y usbmuxd ipheth-utils libimobiledevice-utils
@@ -44,3 +44,5 @@ sudo echo "exit 0" >> /etc/rc.local
 
 # 8. Start
 sudo service dnsmasq start
+# 9. check status 
+systemctl status dnsmasq
