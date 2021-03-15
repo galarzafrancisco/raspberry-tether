@@ -13,17 +13,17 @@
 SOURCE_INTERFACE=enp1s0u1
 
 # 1. Install iphone things (taken from https://gist.github.com/antronic/157e047cdefa98b3150195c2eacb56b8)
-sudo apt install usbmuxd ipheth-utils libimobiledevice-utils
+sudo apt install -y usbmuxd ipheth-utils libimobiledevice-utils
 
 # 2. Install DNS server
-sudo apt install dnsmasq
+sudo apt install -y dnsmasq
 
 # 3. Enable fix IP address on the Ethernet port
 sudo cp dhcpcd.conf /etc/dhcpcd.conf
 sudo service dhcpcd restart
 
 # 4. Configure DHCP and DNS
-sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.backup-`date`
+sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.backup-`date '+%Y-%m-%d_%H:%M:%S'`
 sudo cp dnsmasq.conf /etc/dnsmasq.conf
 sudo cp ethernet.conf /etc/dnsmasq.d/ethernet.conf
 
