@@ -32,8 +32,8 @@ sudo sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 
 # 6. IP tables
-sudo iptables -t nat -A POSTROUTING -o $SOURCE_INTERFACE -j MASQUERADE  
-sudo iptables -A FORWARD -i $SOURCE_INTERFACE -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT  
+sudo iptables -t nat -A POSTROUTING -o $SOURCE_INTERFACE -j MASQUERADE
+sudo iptables -A FORWARD -i $SOURCE_INTERFACE -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 sudo iptables -A FORWARD -i eth0 -o $SOURCE_INTERFACE -j ACCEPT
 
 # 7. Write script to enable IP tables on startup
